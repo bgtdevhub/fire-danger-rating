@@ -1,0 +1,19 @@
+{
+  "name": "fire-danger-rating",
+  "version": "1.0.0",
+  "description": "Sync XML Files from FTP into a National 4-day Fire Danger Rating Layer on ArcGIS Online",
+  "main": "index.js",
+  "type": "module",
+  "repository": "https://fazrulreza89@bitbucket.org/bgt-innovation/fire-danger-rating.git",
+  "author": "BGT Devhub",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.30.0",
+    "eslint-config-prettier": "^8.5.0"
+  },
+  "dependencies": {
+    "basic-ftp": "^5.0.2",
+    "dotenv": "^16.0.3",
+    "fast-xml-parser": "^4.0.12"
+  }
+}
