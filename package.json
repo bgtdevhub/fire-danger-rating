@@ -7,6 +7,9 @@
   "repository": "https://fazrulreza89@bitbucket.org/bgt-innovation/fire-danger-rating.git",
   "author": "BGT Devhub",
   "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
   "devDependencies": {
     "eslint": "^8.30.0",
     "eslint-config-prettier": "^8.5.0"
@@ -14,6 +17,7 @@
   "dependencies": {
     "basic-ftp": "^5.0.2",
     "dotenv": "^16.0.3",
-    "fast-xml-parser": "^4.0.12"
+    "fast-xml-parser": "^4.0.12",
+    "winston": "^3.8.2"
   }
 }

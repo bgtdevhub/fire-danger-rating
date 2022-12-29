@@ -1,3 +1,5 @@
+export const ftpHost = 'ftp.bom.gov.au';
+export const ftpPath = '/anon/gen/fwo';
 export const fileList = [
   'IDD10731.xml',
   'IDN10016.xml',
@@ -7,3 +9,8 @@ export const fileList = [
   'IDV18555.xml',
   'IDW15100.xml'
 ];
+
+export const downloadFolder = '../downloaded';
+export const combinedFolder = '../combined';
+export const combinedFile = 'index.js';
+export const logLevel = 'info';
