@@ -4,19 +4,21 @@ import logger from '../lib/logger.js';
 import { getCombinedPath, getDownloadPath } from './helper.js';
 
 const getFireRating = (data) => {
-  return data['forecast-period'].map((d) => {
-    return {
-      aac: data['@_aac'],
-      forecastPeriod: d['@_index'],
-      description: data['@_description'],
-      fireBehaviourIndex: d.element['#text'],
-      fireDanger: d.text['#text'],
-      startTimeLocal: d['@_start-time-local'],
-      endTimeLocal: d['@_end-time-local'],
-      startTimeUTC: d['@_start-time-utc'],
-      endTimeUTC: d['@_end-time-utc']
-    };
-  });
+  return data['forecast-period']
+    .sort((a, b) => parseInt(a['@_index'], 10) - parseInt(b['@_index']), 10)
+    .map((d) => {
+      return {
+        aac: data['@_aac'],
+        forecastPeriod: parseInt(d['@_index'], 10),
+        description: data['@_description'],
+        fireBehaviourIndex: d.element['#text'],
+        fireDanger: d.text['#text'],
+        startTimeLocal: d['@_start-time-local'],
+        endTimeLocal: d['@_end-time-local'],
+        startTimeUTC: d['@_start-time-utc'],
+        endTimeUTC: d['@_end-time-utc']
+      };
+    });
 };
 
 const combine = () => {

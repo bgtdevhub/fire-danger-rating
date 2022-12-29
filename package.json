@@ -15,7 +15,11 @@
     "eslint-config-prettier": "^8.5.0"
   },
   "dependencies": {
+    "@esri/arcgis-rest-feature-service": "^4.0.4",
+    "@esri/arcgis-rest-portal": "^4.1.0",
+    "@esri/arcgis-rest-request": "^4.1.1",
     "basic-ftp": "^5.0.2",
+    "date-fns": "^2.29.3",
     "dotenv": "^16.0.3",
     "fast-xml-parser": "^4.0.12",
     "winston": "^3.8.2"

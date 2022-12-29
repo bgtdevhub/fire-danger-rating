@@ -14,3 +14,9 @@ export const downloadFolder = '../downloaded';
 export const combinedFolder = '../combined';
 export const combinedFile = 'index.js';
 export const logLevel = 'info';
+
+export const featureServerUrl =
+  'https://services1.arcgis.com/vHnIGBHHqDR6y0CR/arcgis/rest/services/IDM00007/FeatureServer/5';
+
+export const apiKey =
+  'AAPKc062192080f24bf19f82c35b6fa6d365p6qX41MMf0Teo8snCelvwJc5ZEFWoPd79JeNyQS8_4iKNMtR3dQFUi_TxYoLhjZ5';
