@@ -1,16 +1,9 @@
 import { ApiKeyManager } from '@esri/arcgis-rest-request';
 import { queryFeatures } from '@esri/arcgis-rest-feature-service';
 import { readFileSync, writeFileSync } from 'fs';
-import { parseISO, getUnixTime } from 'date-fns';
 import { apiKey, featureServerUrl } from '../config.js';
 import { getCombinedPath, getUpdatedPath } from './helper.js';
 import logger from '../lib/logger.js';
-
-// 2023-01-02T00:00:00+08:00
-const parseUnix = (date) => {
-  const dateLocal = parseISO(date);
-  return getUnixTime(dateLocal);
-};
 
 const updateLocal = async () => {
   logger.info('updateLocal --> started');
