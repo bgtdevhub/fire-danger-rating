@@ -25,11 +25,12 @@ const combine = () => {
   logger.info('combine --> start');
   const parser = new XMLParser({ ignoreAttributes: false });
 
-  const combinedPath = getCombinedPath();
+  const combinedFile = getCombinedPath();
   const downloadPath = getDownloadPath();
   const fileList = readdirSync(downloadPath);
   logger.debug(`combine --> found ${fileList.length - 1} files`);
 
+  logger.debug('combine --> combining...');
   const allFile = fileList
     .filter((x) => x.includes('xml'))
     .map((file) => {
@@ -49,8 +50,8 @@ const combine = () => {
 
   const combinedData = JSON.stringify(allFile.flat());
 
-  logger.debug('combine --> combining...');
-  writeFileSync(combinedPath, combinedData);
+  logger.debug('combine --> writing...');
+  writeFileSync(combinedFile, combinedData);
   logger.info('combine --> completed');
 };
 

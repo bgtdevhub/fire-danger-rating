@@ -10,9 +10,10 @@ export const fileList = [
   'IDW15100.xml'
 ];
 
-export const downloadFolder = '../downloaded';
-export const combinedFolder = '../combined';
-export const combinedFile = 'index.js';
+export const downloadFolder = '../files/downloaded';
+export const combinedFolder = '../files/combined';
+export const updatedFolder = '../files/updated';
+export const indexFile = 'index.json';
 export const logLevel = 'info';
 
 export const featureServerUrl =

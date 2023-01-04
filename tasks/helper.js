@@ -1,5 +1,10 @@
 import path from 'path';
-import { combinedFile, combinedFolder, downloadFolder } from '../config.js';
+import {
+  indexFile,
+  combinedFolder,
+  downloadFolder,
+  updatedFolder
+} from '../config.js';
 import { __dirname } from '../lib/dirname.js';
 
 export const getDownloadPath = (file) => {
@@ -10,5 +15,9 @@ export const getDownloadPath = (file) => {
 };
 
 export const getCombinedPath = () => {
-  return path.join(__dirname, combinedFolder, combinedFile);
+  return path.join(__dirname, combinedFolder, indexFile);
+};
+
+export const getUpdatedPath = () => {
+  return path.join(__dirname, updatedFolder, indexFile);
 };
