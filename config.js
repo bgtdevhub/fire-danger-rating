@@ -19,5 +19,5 @@ export const logLevel = 'info';
 export const featureServerUrl =
   'https://services1.arcgis.com/vHnIGBHHqDR6y0CR/arcgis/rest/services/IDM00007/FeatureServer/5';
 
-export const apiKey =
-  'AAPKc062192080f24bf19f82c35b6fa6d365p6qX41MMf0Teo8snCelvwJc5ZEFWoPd79JeNyQS8_4iKNMtR3dQFUi_TxYoLhjZ5';
+export const clientId = 'tqMQsAGhsT1TuU2t';
+export const clientSecret = '482b897bb7e2469895c29fea90f57bce';

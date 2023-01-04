@@ -1,25 +1,22 @@
-import { ApiKeyManager } from '@esri/arcgis-rest-request';
 import { applyEdits } from '@esri/arcgis-rest-feature-service';
 import { readFileSync } from 'fs';
-import { apiKey, featureServerUrl } from '../config.js';
+import { featureServerUrl } from '../config.js';
 import { getUpdatedPath } from './helper.js';
 import logger from '../lib/logger.js';
 
-const updateOnline = async () => {
+const updateOnline = async (manager) => {
   logger.info('updateOnline --> started');
 
   const updatedFile = getUpdatedPath();
   const rawData = readFileSync(updatedFile, { encoding: 'utf8' });
   const jsonData = JSON.parse(rawData);
 
-  const authentication = ApiKeyManager.fromKey(apiKey);
-
   logger.debug('updateOnline --> updating...');
   return applyEdits({
     url: featureServerUrl,
     updates: jsonData,
     f: 'json',
-    authentication
+    authentication: manager
   })
     .then((response) => {
       const { updateResults } = response;

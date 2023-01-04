@@ -1,21 +1,19 @@
-import { ApiKeyManager } from '@esri/arcgis-rest-request';
 import { queryFeatures } from '@esri/arcgis-rest-feature-service';
 import { readFileSync, writeFileSync } from 'fs';
-import { apiKey, featureServerUrl } from '../config.js';
+import { featureServerUrl } from '../config.js';
 import { getCombinedPath, getUpdatedPath } from './helper.js';
 import logger from '../lib/logger.js';
 
-const updateLocal = async () => {
+const updateLocal = async (manager) => {
   logger.info('updateLocal --> started');
 
   const updatedFile = getUpdatedPath();
   const combinedFile = getCombinedPath();
   const rawData = readFileSync(combinedFile, { encoding: 'utf8' });
   const jsonData = JSON.parse(rawData);
-  const authentication = ApiKeyManager.fromKey(apiKey);
 
   logger.debug('updateLocal --> fetching data...');
-  return queryFeatures({ url: featureServerUrl, authentication })
+  return queryFeatures({ url: featureServerUrl, authentication: manager })
     .then((response) => {
       logger.debug('updateLocal --> updating data...');
       const resData = response.features.map((f) => {
