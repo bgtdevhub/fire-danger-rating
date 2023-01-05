@@ -1,19 +1,23 @@
 import { queryFeatures } from '@esri/arcgis-rest-feature-service';
 import { readFileSync, writeFileSync } from 'fs';
-import { featureServerUrl } from '../config.js';
-import { getCombinedPath, getUpdatedPath } from './helper.js';
-import logger from '../lib/logger.js';
 
-const updateLocal = async (manager) => {
+import { getPath } from './helper.js';
+import logger from '../lib/logger.js';
+import { combinedFolder, indexFile, updatedFolder } from '../config.js';
+
+const updateLocal = async (prod, manager, featureServerUrl) => {
   logger.info('updateLocal --> started');
 
-  const updatedFile = getUpdatedPath();
-  const combinedFile = getCombinedPath();
+  const updatedFile = getPath(prod, updatedFolder, indexFile);
+  const combinedFile = getPath(prod, combinedFolder, indexFile);
   const rawData = readFileSync(combinedFile, { encoding: 'utf8' });
   const jsonData = JSON.parse(rawData);
 
   logger.debug('updateLocal --> fetching data...');
-  return queryFeatures({ url: featureServerUrl, authentication: manager })
+  return queryFeatures({
+    url: featureServerUrl,
+    authentication: manager
+  })
     .then((response) => {
       logger.debug('updateLocal --> updating data...');
       const resData = response.features.map((f) => {

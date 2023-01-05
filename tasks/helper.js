@@ -1,23 +1,15 @@
-import path from 'path';
-import {
-  indexFile,
-  combinedFolder,
-  downloadFolder,
-  updatedFolder
-} from '../config.js';
-import { __dirname } from '../lib/dirname.js';
+import { dirname, join } from 'path';
+import { localFolder } from '../config.js';
+import { fileURLToPath } from 'url';
 
-export const getDownloadPath = (file) => {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+export const getPath = (prod, folder, file) => {
   if (file) {
-    return path.join(__dirname, downloadFolder, file);
+    return prod
+      ? `/tmp/${folder}/${file}`
+      : join(__dirname, localFolder, folder, file);
   }
-  return path.join(__dirname, downloadFolder);
-};
-
-export const getCombinedPath = () => {
-  return path.join(__dirname, combinedFolder, indexFile);
-};
-
-export const getUpdatedPath = () => {
-  return path.join(__dirname, updatedFolder, indexFile);
+  return prod ? `/tmp/${folder}` : join(__dirname, localFolder, folder);
 };

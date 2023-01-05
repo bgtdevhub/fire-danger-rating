@@ -1,13 +1,14 @@
 import { applyEdits } from '@esri/arcgis-rest-feature-service';
 import { readFileSync } from 'fs';
-import { featureServerUrl } from '../config.js';
-import { getUpdatedPath } from './helper.js';
-import logger from '../lib/logger.js';
 
-const updateOnline = async (manager) => {
+import { getPath } from './helper.js';
+import logger from '../lib/logger.js';
+import { indexFile, updatedFolder } from '../config.js';
+
+const updateOnline = async (prod, manager, featureServerUrl) => {
   logger.info('updateOnline --> started');
 
-  const updatedFile = getUpdatedPath();
+  const updatedFile = getPath(prod, updatedFolder, indexFile);
   const rawData = readFileSync(updatedFile, { encoding: 'utf8' });
   const jsonData = JSON.parse(rawData);
 

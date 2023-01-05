@@ -8,7 +8,7 @@
   "author": "BGT Devhub",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js"
+    "dev": "node dev-run.js"
   },
   "devDependencies": {
     "eslint": "^8.30.0",

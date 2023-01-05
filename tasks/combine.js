@@ -1,7 +1,8 @@
 import { XMLParser } from 'fast-xml-parser';
 import { readFileSync, readdirSync, writeFileSync } from 'fs';
+import { combinedFolder, downloadFolder, indexFile } from '../config.js';
 import logger from '../lib/logger.js';
-import { getCombinedPath, getDownloadPath } from './helper.js';
+import { getPath } from './helper.js';
 
 const getFireRating = (data) => {
   return data['forecast-period']
@@ -21,12 +22,12 @@ const getFireRating = (data) => {
     });
 };
 
-const combine = () => {
+const combine = (prod) => {
   logger.info('combine --> start');
   const parser = new XMLParser({ ignoreAttributes: false });
 
-  const combinedFile = getCombinedPath();
-  const downloadPath = getDownloadPath();
+  const combinedFile = getPath(prod, combinedFolder, indexFile);
+  const downloadPath = getPath(prod, downloadFolder);
   const fileList = readdirSync(downloadPath);
   logger.debug(`combine --> found ${fileList.length - 1} files`);
 
@@ -35,7 +36,7 @@ const combine = () => {
     .filter((x) => x.includes('xml'))
     .map((file) => {
       logger.debug(`combine --> processing ${file}`);
-      const XMLsource = getDownloadPath(file);
+      const XMLsource = getPath(prod, downloadFolder, file);
       const XMLfile = readFileSync(XMLsource);
       const jsonObj = parser.parse(XMLfile);
 
