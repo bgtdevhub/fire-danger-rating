@@ -51,7 +51,7 @@ sls deploy
 ### Manually trigger AWS Lambda function
 
 ```
-sls invoke -f app
+sls invoke -f sync
 ```
 
 ### Running the function locally
