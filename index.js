@@ -10,7 +10,8 @@ import updateTimeExtent from './tasks/updateTimeExtent.js';
 
 config();
 
-const { featureServerUrl, clientId, clientSecret } = process.env;
+const { featureServerUrl, fsTimeExtentUrl, clientId, clientSecret } =
+  process.env;
 
 export const sync = async (prod = true) => {
   const manager = await authenticate(clientId, clientSecret);
@@ -19,7 +20,7 @@ export const sync = async (prod = true) => {
   await combine(prod);
   await updateLocal(prod, manager, featureServerUrl);
   await updateOnline(prod, manager, featureServerUrl);
-  await updateTimeExtent(manager, featureServerUrl);
+  await updateTimeExtent(manager, fsTimeExtentUrl);
   return 'OK';
 };
 

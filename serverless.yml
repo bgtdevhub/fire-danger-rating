@@ -13,6 +13,7 @@ provider:
     featureServerUrl: ${env:featureServerUrl}
     clientId: ${env:clientId}
     clientSecret: ${env:clientSecret}
+    fsTimeExtentUrl: ${env:fsTimeExtentUrl}
   iam:
     role:
       statements:
@@ -30,6 +31,6 @@ functions:
     events:
       - schedule:
           enabled: true
-          rate: cron(0 0,12 * * ? *)
+          rate: cron(0 1,4,7,20,21 * * ? *) # 7am, 8am, midday, 3pm, 6pm, Melbourne time
 # plugins:
 #   - serverless-offline

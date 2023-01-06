@@ -5,10 +5,10 @@ import logger from '../lib/logger.js';
 // https://services1.arcgis.com/vHnIGBHHqDR6y0CR/arcgis/rest/services/Fire_Danger_Ratings_for_Victoria/FeatureServer/0'
 // output = { id: 0, timeExtent: [ 1623801600000, 1624147200000 ] }
 
-const updateTimeExtent = async (manager, featureServerUrl) => {
+const updateTimeExtent = async (manager, fsTimeExtentUrl) => {
   logger.info('updateTimeExtent --> start');
   return getService({
-    url: featureServerUrl,
+    url: fsTimeExtentUrl,
     authentication: manager,
     params: {
       f: 'json',
