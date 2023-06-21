@@ -1,11 +1,9 @@
 import ftp from 'basic-ftp';
-// import * as dotenv from 'dotenv'; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
 import wrapper from '../lib/wrapper.js';
 import { downloadFolder, fileList, ftpHost, ftpPath } from '../config.js';
 import { getPath } from './helper.js';
 import logger from '../lib/logger.js';
 
-// dotenv.config();
 /**
  * @desc stop log and close ftp client connection
  * @param {Object} client - ftp client

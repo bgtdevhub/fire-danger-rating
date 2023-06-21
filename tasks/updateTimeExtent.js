@@ -25,12 +25,9 @@ const updateTimeExtent = async (manager, fsTimeExtentUrl) => {
     })
     .catch((err) => {
       if (err) {
-        logger.error(
-          `updateTimeExtent --> encountered error ${JSON.stringify(err)}`
-        );
+        logger.error(`updateTimeExtent --> encountered error ${err}`);
       }
     });
 };
 
 export default updateTimeExtent;
-// updateTimeExtent();

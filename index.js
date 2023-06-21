@@ -23,5 +23,3 @@ export const sync = async (prod = true) => {
   await updateTimeExtent(manager, fsTimeExtentUrl);
   return 'OK';
 };
-
-// sync();

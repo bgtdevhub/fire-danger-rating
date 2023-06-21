@@ -30,6 +30,9 @@ const updateLocal = async (prod, manager, featureServerUrl) => {
         );
 
         const xmlObj = jsonData.filter((j) => j.aac === sourceObj.AAC);
+        if (xmlObj.length === 0) {
+          return { attributes: null };
+        }
         const periodXmlObj = xmlObj[sourceObj['Forecast_Period'] - 1];
 
         const newObj = {
@@ -47,14 +50,15 @@ const updateLocal = async (prod, manager, featureServerUrl) => {
         return newObj;
       });
 
+      const finalRes = resData.filter((x) => x.attributes !== null);
+
       logger.debug('updateLocal --> writing...');
-      writeFileSync(updatedFile, JSON.stringify(resData));
+      writeFileSync(updatedFile, JSON.stringify(finalRes));
       logger.info('updateLocal --> completed');
     })
     .catch((err) => {
-      logger.error(`updateLocal --> encountered error: ${JSON.stringify(err)}`);
+      logger.error(`updateLocal --> encountered error: ${err}`);
     });
 };
 
 export default updateLocal;
-// updateLocal();

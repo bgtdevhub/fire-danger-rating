@@ -39,4 +39,3 @@ const updateOnline = async (prod, manager, featureServerUrl) => {
 };
 
 export default updateOnline;
-// updateOnline();
